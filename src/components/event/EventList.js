@@ -8,7 +8,6 @@ export const EventList = (props) => {
         getEvents()
     }, [])
 
-    let date
 
     return (
         <article className="events">
@@ -22,7 +21,7 @@ export const EventList = (props) => {
                         <div>{event.description}</div>
                         <div>
                             {
-                                new Date(date).toLocaleDateString("en-US",
+                                new Date(event.date).toLocaleDateString("en-US",
                                 {
                                     weekday: 'long',
                                     year: 'numeric',
@@ -30,7 +29,7 @@ export const EventList = (props) => {
                                     day: 'numeric'
                                 })
                             }
-                           @ {event.time}
+                            @ {event.time}
                         </div>
                     </section>
                 })

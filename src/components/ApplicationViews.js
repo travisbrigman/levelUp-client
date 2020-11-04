@@ -2,9 +2,10 @@ import React from "react";
 import { Route } from "react-router-dom";
 import { GameProvider } from "./game/GameProvider";
 import { GameList } from "./game/GameList";
-import { EventProvider } from "./game/EventProvider";
-import { EventList } from "./game/EventList";
+import { EventProvider } from "./event/EventProvider";
+import { EventList } from "./event/EventList";
 import { GameForm } from "./game/GameForm";
+import { EventForm } from "./event/EventForm";
 
 export const ApplicationViews = () => {
   return (
@@ -24,11 +25,18 @@ export const ApplicationViews = () => {
           />
         </GameProvider>
 
-        <EventProvider>
-          <Route exact path="/events">
-            <EventList />
-          </Route>
-        </EventProvider>
+        <GameProvider>
+          <EventProvider>
+            <Route exact path="/events">
+              <EventList />
+            </Route>
+            <Route
+              exact
+              path="/events/new"
+              render={(props) => <EventForm {...props} />}
+            />
+          </EventProvider>
+        </GameProvider>
       </main>
     </>
   );
